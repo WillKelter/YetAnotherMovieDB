@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:paddingBottom="16dp"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <ImageView
+                android:id="@+id/imageMovieDetailBig"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+
+
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/imageMovieDetailCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageMovieDetailBig"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="196dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="6dp">
+            <ImageView
+                    android:id="@+id/imageMovieDetail"
+                    android:layout_width="120dp"
+                    android:layout_height="180dp"
+                    />
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+                android:id="@+id/textMovieDetailName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintWidth_max="wrap"
+                android:text=""
+                android:textSize="20sp"
+                android:maxLines="3"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/imageMovieDetailBig"
+                app:layout_constraintStart_toEndOf="@id/imageMovieDetailCard"
+                app:layout_constraintEnd_toEndOf="@id/imageMovieDetailBig"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"/>
+
+        <TextView
+                android:id="@+id/textMovieDetailInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/imageMovieDetailCard"
+                app:layout_constraintTop_toBottomOf="@id/imageMovieDetailBig"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"/>
+
+        <LinearLayout
+                android:id="@+id/linearLayoutMovieImdb"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/imageMovieDetailCard"
+                app:layout_constraintTop_toBottomOf="@id/textMovieDetailInfo"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:gravity="center">
+
+            <TextView
+                    android:id="@+id/movieDetailVoteFirst"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+            />
+
+            <TextView
+                    android:id="@+id/movieDetailVoteSecond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="12sp"
+            />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/movieDetailRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                app:layout_constraintTop_toBottomOf="@id/textMovieDetailInfo"
+                app:layout_constraintStart_toEndOf="@id/linearLayoutMovieImdb"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+        />
+
+        <TextView
+                android:id="@+id/textMovieDetailDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageMovieDetailCard"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp"/>
+
+        <LinearLayout
+                android:id="@+id/linearFullCastAndCrew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/textMovieDetailDescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="32dp"
+            />
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewMovieFullCastAndCrew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
