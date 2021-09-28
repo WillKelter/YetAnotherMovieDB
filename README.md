@@ -1,5 +1,5 @@
 # YetAnotherMovieDB
-Movie Database project to study Retrifit, RxJava2, LiveData and MVVI
+Movie Database project to study Retrifit, RxJava2, LiveData and MVVM
 
 ![](screen.gif)
 
