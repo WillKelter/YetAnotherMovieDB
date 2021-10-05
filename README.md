@@ -6,6 +6,6 @@ Movie Database project to study Retrifit, RxJava2, LiveData and MVVM
 
 
 To-Do:
-  - Migrate to ViewBinding from findViewById
-  - Tweak UI
-  - Add more features
+  - [x] Migrate to ViewBinding from findViewById
+  - [ ] Tweak UI
+  - [ ] Add more features
