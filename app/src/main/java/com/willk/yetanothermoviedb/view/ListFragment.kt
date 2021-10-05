@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.willk.yetanothermoviedb.R
 import com.willk.yetanothermoviedb.data.Movie
+import com.willk.yetanothermoviedb.databinding.FragmentDetailedBinding
+import com.willk.yetanothermoviedb.databinding.FragmentListBinding
 import com.willk.yetanothermoviedb.view.adapters.NowPlayingMoviesAdapter
 import com.willk.yetanothermoviedb.view.adapters.PopularMoviesAdapter
 import com.willk.yetanothermoviedb.view.viewmodels.MovieViewModel
@@ -21,6 +23,9 @@ import com.willk.yetanothermoviedb.view.viewmodels.MovieViewModel
 class ListFragment : Fragment() {
 
     private val viewModel: MovieViewModel by viewModels()
+
+    private var _binding: FragmentListBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var popularMoviesRecycler: RecyclerView
     private lateinit var popularMoviesAdapter: PopularMoviesAdapter
@@ -35,16 +40,22 @@ class ListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {return inflater.inflate(R.layout.fragment_list, container, false)
+    ): View? {_binding = FragmentListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        popularMoviesRecycler = view.findViewById(R.id.popularRecyclerView)
-        nowPlayingMoviesRecycler = view.findViewById(R.id.nowPlayingRecyclerView)
+        popularMoviesRecycler = binding.popularRecyclerView
+        nowPlayingMoviesRecycler = binding.nowPlayingRecyclerView
 
         getMoviesList(viewModel)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun getMoviesList(viewModel: MovieViewModel){

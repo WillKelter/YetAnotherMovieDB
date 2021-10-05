@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.viewModels
@@ -15,12 +14,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.willk.yetanothermoviedb.R
 import com.willk.yetanothermoviedb.data.CastAndCrew
+import com.willk.yetanothermoviedb.databinding.FragmentDetailedBinding
 import com.willk.yetanothermoviedb.utils.GlideUtils
 import com.willk.yetanothermoviedb.view.adapters.CastAndCrewAdapter
 import com.willk.yetanothermoviedb.view.viewmodels.CastAndCrewViewModel
 
 
 class DetailedFragment : Fragment() {
+
+
+    private var _binding: FragmentDetailedBinding?  = null
+    private val binding get() = _binding!!
 
     private lateinit var backdrop: ImageView
     private lateinit var poster: ImageView
@@ -50,22 +54,23 @@ class DetailedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_detailed, container, false)
+        _binding = FragmentDetailedBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        backdrop = view.findViewById(R.id.imageMovieDetailBig)
-        poster = view.findViewById(R.id.imageMovieDetail)
-        title = view.findViewById(R.id.textMovieDetailName)
-        rating = view.findViewById(R.id.movieDetailRatingBar)
-        overview = view.findViewById(R.id.textMovieDetailDescription)
-        info = view.findViewById(R.id.textMovieDetailInfo)
-        voteFirst = view.findViewById(R.id.movieDetailVoteFirst)
-        voteSecond = view.findViewById(R.id.movieDetailVoteSecond)
+        backdrop = binding.imageMovieDetailBig
+        poster = binding.imageMovieDetail
+        title = binding.textMovieDetailName
+        rating = binding.movieDetailRatingBar
+        overview = binding.textMovieDetailDescription
+        info = binding.textMovieDetailInfo
+        voteFirst = binding.movieDetailVoteFirst
+        voteSecond = binding.movieDetailVoteSecond
 
-        castAndCrew = view.findViewById(R.id.recyclerViewMovieFullCastAndCrew)
+        castAndCrew = binding.recyclerViewMovieFullCastAndCrew
 
         moviesDetailArrayList = requireArguments().getStringArrayList("MoviesDetailArrayList")!!
         ratingScore = requireArguments().getDouble("MoviesRatingScore",1.0)
@@ -91,6 +96,12 @@ class DetailedFragment : Fragment() {
 
         getCastAndCrew()
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 
     private fun getCastAndCrew() {
         castAndCrew.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
